@@ -1,0 +1,355 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+// Generated Help ID header file
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "resource.hm"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// German (Germany) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 7, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "#include ""res\\DTO.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.deu\\afxres.rc""          // Standard components\r\n"
+    "#endif\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\DTO.ico"
+IDI_ICON_DTO            ICON    DISCARDABLE     "res\\icon1.ico"
+IDI_ICON_DTMNEU         ICON    DISCARDABLE     "res\\icon_dtm.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DTO_DIALOG DIALOGEX 0, 0, 181, 140
+STYLE DS_3DLOOK | WS_POPUP | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_APPWINDOW
+CAPTION "DTO"
+FONT 8, "Tahoma"
+BEGIN
+    PUSHBUTTON      "·",IDCANCEL,150,122,25,13,BS_RIGHT | NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_Pfad,5,7,170,12,ES_AUTOHSCROLL,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_EDIT_Jahr,5,26,25,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_Monat,33,26,15,12,ES_CENTER | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_Tag,51,26,15,12,ES_CENTER | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_Typ,69,26,16,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "¹ Ordner erstellen",IDC_Ordner_erstellen,10,42,134,15,
+                    BS_LEFT | NOT WS_TABSTOP,WS_EX_CLIENTEDGE
+    CHECKBOX        "",IDC_CHECK_CRW,150,46,12,9,BS_PUSHLIKE | NOT 
+                    WS_TABSTOP,WS_EX_STATICEDGE
+    PUSHBUTTON      "² Bild Dateien ordnen",IDC_dDateien_ordnen,10,61,134,15,
+                    BS_LEFT | NOT WS_TABSTOP,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "³ Bild Dateien umbenennen",IDC_Dateien_umbenennen,10,81,
+                    134,15,BS_LEFT | NOT WS_TABSTOP,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "",IDC_neu_ordnen,150,82,25,10,BS_CENTER | BS_VCENTER | 
+                    NOT WS_TABSTOP,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "¤ i",IDC_info,7,122,136,13,BS_LEFT | NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE,HIDC_info
+    PUSHBUTTON      "° Ordnerstruktur reinigen",IDC_reinigen,10,102,134,15,
+                    BS_LEFT | NOT WS_TABSTOP,WS_EX_CLIENTEDGE
+    EDITTEXT        IDC_EDIT_Name,88,26,87,13,ES_AUTOHSCROLL
+    CONTROL         131,IDC_STATIC,"Static",SS_BITMAP | WS_DISABLED,4,1,13,5,
+                    WS_EX_TRANSPARENT
+    CONTROL         132,IDC_STATIC,"Static",SS_BITMAP | WS_DISABLED,4,20,11,
+                    5,WS_EX_TRANSPARENT
+    CONTROL         133,IDC_STATIC,"Static",SS_BITMAP,32,20,12,5
+    CONTROL         134,IDC_STATIC,"Static",SS_BITMAP,50,20,11,6
+    CONTROL         135,IDC_STATIC,"Static",SS_BITMAP,68,20,11,6
+    CONTROL         136,IDC_STATIC,"Static",SS_BITMAP,87,20,14,5
+    CONTROL         138,IDC_STATIC,"Static",SS_BITMAP,149,92,25,3
+    CONTROL         139,IDC_STATIC,"Static",SS_BITMAP,150,41,23,4
+    PUSHBUTTON      "ªº",IDC_hilfe,150,102,25,13,BS_RIGHT,WS_EX_STATICEDGE
+    PUSHBUTTON      "",IDC_raw_parameter,162,46,12,9,NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_mark1,0,43,9,12,ES_RIGHT | ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_mark2,0,61,9,12,ES_RIGHT | ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_mark3,0,82,9,12,ES_RIGHT | ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_mark4,0,102,9,14,ES_RIGHT | ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER
+    PUSHBUTTON      "",IDC_neu_erstellen,150,61,25,10,BS_CENTER | BS_VCENTER | 
+                    NOT WS_TABSTOP,WS_EX_CLIENTEDGE
+    CONTROL         155,IDC_STATIC,"Static",SS_BITMAP,148,72,29,3
+    EDITTEXT        IDC_EDIT_mark5,143,60,6,12,ES_RIGHT | ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_EDIT_mark6,143,82,6,12,ES_RIGHT | ES_AUTOHSCROLL | 
+                    ES_READONLY | NOT WS_BORDER
+END
+
+IDD_DTO_info DIALOGEX 5, 120, 173, 42
+STYLE WS_POPUP | WS_BORDER
+FONT 8, "Tahoma"
+BEGIN
+    PUSHBUTTON      "°",IDCANCEL,8,27,130,9,BS_RIGHT | NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    ICON            IDR_MAINFRAME,IDC_STATIC,145,16,20,20
+    LTEXT           "DTO - Dateiordnungs Werkzeug",IDC_STATIC,10,6,102,8
+    LTEXT           "Copyright©2oo8 by Dietmar Schrausser",IDC_STATIC,10,15,
+                    131,8
+    CONTROL         150,IDC_STATIC,"Static",SS_BITMAP,135,3,32,5
+END
+
+IDD_DTO_einstellungen DIALOGEX 181, 27, 112, 152
+STYLE WS_POPUP | WS_BORDER
+FONT 8, "Tahoma"
+BEGIN
+    PUSHBUTTON      "°",IDCANCEL,39,137,66,9,BS_RIGHT | NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDIT_01,7,37,24,12,ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_EDIT_02,34,37,36,12,ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_EDIT_03,7,57,97,12,ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_EDIT_04,7,76,97,12,ES_AUTOHSCROLL | NOT WS_TABSTOP
+    EDITTEXT        IDC_EDIT_05,7,95,97,12,ES_AUTOHSCROLL | NOT WS_TABSTOP
+    CHECKBOX        "",IDC_CHECK_einstellungen,8,137,26,9,BS_PUSHLIKE | NOT 
+                    WS_TABSTOP,WS_EX_STATICEDGE
+    CONTROL         144,IDC_STATIC,"Static",SS_BITMAP,6,32,35,5
+    CONTROL         145,IDC_STATIC,"Static",SS_BITMAP,33,32,41,5
+    CONTROL         146,IDC_STATIC,"Static",SS_BITMAP,5,52,62,5
+    CONTROL         148,IDC_STATIC,"Static",SS_BITMAP,5,71,62,5
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,5,90,62,5
+    CONTROL         149,IDC_STATIC,"Static",SS_BITMAP,11,131,41,5
+    CONTROL         151,IDC_STATIC,"Static",SS_BITMAP,48,3,55,5
+    EDITTEXT        IDC_EDIT_num_i,73,37,14,12,ES_RIGHT | ES_AUTOHSCROLL | 
+                    NOT WS_TABSTOP
+    EDITTEXT        IDC_EDIT_num_k,90,37,14,12,ES_RIGHT | ES_AUTOHSCROLL | 
+                    NOT WS_TABSTOP
+    CONTROL         153,IDC_STATIC,"Static",SS_BITMAP,73,32,7,5
+    CONTROL         154,IDC_STATIC,"Static",SS_BITMAP,90,32,7,5
+    EDITTEXT        IDC_EDIT_06,8,115,97,12,ES_AUTOHSCROLL | NOT WS_TABSTOP
+    CONTROL         156,IDC_STATIC,"Static",SS_BITMAP,6,110,62,5
+    EDITTEXT        IDC_EDIT_2,7,17,24,12,ES_CENTER | ES_AUTOHSCROLL | NOT 
+                    WS_TABSTOP
+    CONTROL         157,IDC_STATIC,"Static",SS_BITMAP,6,12,35,5
+    CHECKBOX        "",IDC_CHECK_log,83,20,22,9,BS_PUSHLIKE | NOT WS_TABSTOP,
+                    WS_EX_STATICEDGE
+    CHECKBOX        "",IDC_CHECK_auto,38,20,22,9,BS_PUSHLIKE | NOT 
+                    WS_TABSTOP,WS_EX_STATICEDGE
+    CHECKBOX        "",IDC_CHECK_view,60,20,22,9,BS_PUSHLIKE | NOT 
+                    WS_TABSTOP,WS_EX_STATICEDGE
+    CONTROL         158,IDC_STATIC,"Static",SS_BITMAP,61,15,20,5
+    CONTROL         159,IDC_STATIC,"Static",SS_BITMAP,39,15,20,5
+    CONTROL         160,IDC_STATIC,"Static",SS_BITMAP,86,15,29,6
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040704b0"
+        BEGIN
+            VALUE "CompanyName", "Dietmar Schrausser\0"
+            VALUE "FileDescription", "DTO Application\0"
+            VALUE "FileVersion", "1.0\0"
+            VALUE "InternalName", "DTO\0"
+            VALUE "LegalCopyright", "© 2008 by Dietmar Schrausser\0"
+            VALUE "OriginalFilename", "DTO.EXE\0"
+            VALUE "ProductName", "DTO Application\0"
+            VALUE "ProductVersion", "1.0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x407, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_DTO_DIALOG, DIALOG
+    BEGIN
+        VERTGUIDE, 30
+        VERTGUIDE, 48
+        VERTGUIDE, 66
+        VERTGUIDE, 85
+        VERTGUIDE, 143
+        VERTGUIDE, 150
+        VERTGUIDE, 175
+        TOPMARGIN, 2
+        HORZGUIDE, 7
+        HORZGUIDE, 19
+        HORZGUIDE, 26
+        HORZGUIDE, 38
+        HORZGUIDE, 43
+        HORZGUIDE, 61
+        HORZGUIDE, 82
+        HORZGUIDE, 102
+        HORZGUIDE, 122
+        HORZGUIDE, 135
+    END
+
+    IDD_DTO_info, DIALOG
+    BEGIN
+        LEFTMARGIN, 8
+        RIGHTMARGIN, 166
+        VERTGUIDE, 112
+        VERTGUIDE, 138
+        VERTGUIDE, 145
+        VERTGUIDE, 166
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 36
+        HORZGUIDE, 16
+        HORZGUIDE, 27
+    END
+
+    IDD_DTO_einstellungen, DIALOG
+    BEGIN
+        VERTGUIDE, 6
+        VERTGUIDE, 8
+        VERTGUIDE, 34
+        VERTGUIDE, 39
+        VERTGUIDE, 60
+        VERTGUIDE, 83
+        VERTGUIDE, 104
+        BOTTOMMARGIN, 146
+        HORZGUIDE, 20
+        HORZGUIDE, 29
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP_pfad         BITMAP  DISCARDABLE     "res\\bitmap_p.bmp"
+IDB_BITMAP_jahr         BITMAP  DISCARDABLE     "res\\bitmap_j.bmp"
+IDB_BITMAP_monat        BITMAP  DISCARDABLE     "res\\bitmap_m.bmp"
+IDB_BITMAP_tag          BITMAP  DISCARDABLE     "res\\bitmap_t.bmp"
+IDB_BITMAP_typ          BITMAP  DISCARDABLE     "res\\bmp00001.bmp"
+IDB_BITMAP_name         BITMAP  DISCARDABLE     "res\\bitmap_n.bmp"
+IDB_BITMAP_neu          BITMAP  DISCARDABLE     "res\\bmp00002.bmp"
+IDB_BITMAP_CRW          BITMAP  DISCARDABLE     "res\\bitmap_c.bmp"
+IDB_BITMAP_rawtyp       BITMAP  DISCARDABLE     "res\\bmp00003.bmp"
+IDB_BITMAP_bildparameter BITMAP  DISCARDABLE     "res\\bitmap_b.bmp"
+IDB_BITMAP_pfaddtmneu   BITMAP  DISCARDABLE     "res\\bmp00004.bmp"
+IDB_BITMAP_pfaddtnum    BITMAP  DISCARDABLE     "res\\bmp00005.bmp"
+IDB_BITMAP_pfaddtord    BITMAP  DISCARDABLE     "res\\bmp00006.bmp"
+IDB_BITMAP_einstellungen BITMAP  DISCARDABLE     "res\\bitmap_e.bmp"
+IDB_BITMAP_kopf_info    BITMAP  DISCARDABLE     "res\\bitmap_k.bmp"
+IDB_BITMAP_kopf_ini     BITMAP  DISCARDABLE     "res\\bmp00007.bmp"
+IDB_BITMAP_DTO_ICON     BITMAP  DISCARDABLE     "res\\bitmap_d.bmp"
+IDB_BITMAP_num_i        BITMAP  DISCARDABLE     "res\\bmp00008.bmp"
+IDB_BITMAP_num_k        BITMAP  DISCARDABLE     "res\\bmp00009.bmp"
+IDB_BITMAP_neu_erstellen BITMAP  DISCARDABLE     "res\\bmp00010.bmp"
+IDB_BITMAP_pfaddtprm    BITMAP  DISCARDABLE     "res\\bmp00011.bmp"
+IDB_BITMAP_bildtyp      BITMAP  DISCARDABLE     "res\\bmp00012.bmp"
+IDB_BITMAP_view         BITMAP  DISCARDABLE     "res\\bitmap_v.bmp"
+IDB_BITMAP_auto         BITMAP  DISCARDABLE     "res\\bmp00013.bmp"
+IDB_BITMAP_log          BITMAP  DISCARDABLE     "res\\bitmap_l.bmp"
+#endif    // German (Germany) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
+#ifdef _WIN32
+LANGUAGE 7, 1
+#pragma code_page(1252)
+#endif
+#include "res\DTO.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.deu\afxres.rc"          // Standard components
+#endif
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

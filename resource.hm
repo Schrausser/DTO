@@ -1,0 +1,4 @@
+// Microsoft Developer Studio generated Help ID include file.
+// Used by DTO.rc
+//
+#define HIDC_info                       0x806603f4    // IDD_DTO_DIALOG
