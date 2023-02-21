@@ -3,3 +3,5 @@ The file organization tool (DTO) is a 32-bit Windows application for the systema
 
  The generated folder structure contains a main folder (1) and one or, in the case of processed raw files, two subfolders (2) and (3) with the ordered and renamed image files or raw files.
 
+## Manual
+https://www.academia.edu/81738669
