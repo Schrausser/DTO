@@ -1,0 +1,37 @@
+DTPRM by Dietmar SCHRAUSSER 2oo8
+
+Allgemein
+---------
+DOS Anwendung DTPRM.EXE erweitert eine von DTORD generierte DOS Batch um das Einfügen von RAW Verarbeitungsparametern:
+
+dateiname_parameter.erweiterung
+
+wobei,
+parameter ... RAW Verarbeitungsparameter
+
+bsp: 2008_02_11_003_CRW_0034.jpg -> 2008_02_11_003_CRW_0034_srp+2.jpg
+
+Arbeitsweise
+------------
+1# Übernahme einer DOS Batch zur Dateiumbenennung (generiert mit DTORD)
+
+bsp: 	ren CRW_0001.jpg 2008_02_11_001_CRW_0001.jpg
+	ren CRW_0011.jpg 2008_02_11_002_CRW_0011.jpg
+	ren CRW_0005.jpg 2008_02_11_003_CRW_0005.jpg
+	ren CRW_0023.jpg 2008_02_11_004_CRW_0023.jpg
+
+2# Ausgabe einer modifizierten DOS Batch zur Dateiumbenennung (via 'RENAME' Routine)
+
+bsp: 	ren 2008_02_11_001_CRW_0001.jpg 2008_02_11_001_CRW_0001_srp+2.jpg
+	ren 2008_02_11_002_CRW_0011.jpg 2008_02_11_002_CRW_0011_srp+2.jpg
+	ren 2008_02_11_003_CRW_0005.jpg 2008_02_11_003_CRW_0005_srp+2.jpg
+	ren 2008_02_11_004_CRW_0023.jpg 2008_02_11_004_CRW_0023_srp+2.jpg
+
+Handhabung
+----------
+DTPRM [input] [output] [p] 
+[input] ... Eingabe Datei (DOS Batch DTORD)
+[output] .. Ausgabe Datei (DOS Batch)
+[p] ....... Parameter
+
+bsp: 	DTPRM DTREN.BAT DTRENP.BAT _srp+2

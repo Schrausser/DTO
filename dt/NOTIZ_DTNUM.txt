@@ -1,0 +1,51 @@
+DTNUM by Dietmar SCHRAUSSER 2oo8
+
+Allgemein
+---------
+DOS Anwendung DTNUM.EXE zur Erzeugung einer DOS Batch zur systematischen Dateiumbenennung gemäss einer vorhandenen systematisierten (DTORD) und nummerierten Dateiliste in folgendes Format:
+
+dateiname -> jjj_mm_tt_nnn_dateiname 
+
+wobei,
+jjjj_mm_tt_nnn_ .... Datierung und Nummerierung (DTORD) einer entsprechenden Datei(2)
+dateiname .......... gemäss der entsprechenden Datei(2) umzubenennede Datei(1)
+
+bsp: CRW_1234.crw -> 2008_02_11_003_CRW_1234.crw
+
+Arbeitsweise
+------------
+1# Übernahme einer Dateiliste aus einem ASCII-File [file] (generiert mit 'DIR /b /n > [file]')
+
+bsp: 	CRW_1231.crw
+	CRW_1232.crw
+	CRW_1233.crw
+	CRW_1234.crw
+	CRW_1236.crw
+	CRW_1239.crw
+
+2# Übernahme einer systematisierten (DTORD) und nummerierten Dateiliste aus einem ASCII-File [file] (generiert mit 'DIR /b /n > [file]')
+
+bsp: 	2008_02_11_001_CRW_1234_RJ.jpg
+	2008_02_11_002_CRW_1236_RJ.jpg
+	2008_02_11_003_CRW_1232_RJ.jpg
+	2008_02_11_004_CRW_1239_RJ.jpg
+
+3# Ausgabe einer DOS Batch zur Dateiumbenennung (via 'RENAME' Routine)
+
+bsp: 	ren CRW_1234.crw 2008_02_11_001_CRW_1234.crw
+	ren CRW_1236.crw 2008_02_11_002_CRW_1236.crw
+	ren CRW_1232.crw 2008_02_11_003_CRW_1232.crw
+	ren CRW_1239.crw 2008_02_11_004_CRW_1239.crw
+
+Handhabung
+----------
+ DTNUM [input1] [input2] [output] [n1] [n2] [i] [k]
+ [input1] .. Eingabe Datei 1 (ASCII File der umzubenennenden Dateinamen)
+ [input2] .. Eingabe Datei 2 (ASCII File systematisierter und nummerierter Dateinamen)
+ [output] .. Ausgabe Datei (DOS Batch zur Dateiumbenennung)
+ [n1] ...... Anzahl der umzubenennenden Dateinamen (0:Automatische Bestimmung)
+ [n2] ...... Anzahl der systematisierten und nummerierten Dateinamen (0:Automatische Bestimmung)
+ [i] ....... Zeichen ab dem der Vergleich stattfindet (bsp 2008_02_11_001_~i~CRW_1234.crw, i = 15)
+ [k] ....... Anzahl der zu vergleichenden Zeichen (bsp: CRW_1234, k = 8)
+
+bsp: 	DTNUM crwdir.txt jpgdir.txt DTRENAME.BAT 6 4 15 8

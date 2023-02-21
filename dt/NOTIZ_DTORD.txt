@@ -1,0 +1,43 @@
+DTORD by Dietmar SCHRAUSSER 2oo8
+
+Allgemein
+---------
+DOS Anwendung DTORD.EXE zur Erzeugung einer DOS Batch zur systematischen Dateiumbenennung in folgendes Format:
+
+jjj_mm_tt_nnn_dateiname
+
+wobei,
+jjjj Jahr der Dateierstellung (4-stellig)
+mm   Monat der Dateierstellung (2-stellig)
+tt   Tag der Dateierstellung (2-stellig)
+nnn  Laufindex (3-stellig)
+
+bsp: Pic00034.jpg -> 2008_02_11_003_Pic00034.jpg
+
+Arbeitsweise
+------------
+1# Übernahme einer Dateiliste aus einem ASCII-File [file] (generiert mit bspw. 'DIR /b /n > [file]')
+
+bsp: 	Pic00001.jpg
+	Pic00005.jpg
+	Pic00034.jpg
+	Pic00065.jpg
+
+2# Ausgabe einer DOS Batch zur Dateiumbenennung (via 'RENAME' Routine)
+
+bsp: 	ren Pic00001.jpg 2008_02_11_001_Pic00001.jpg
+	ren Pic00005.jpg 2008_02_11_002_Pic00001.jpg
+	ren Pic00034.jpg 2008_02_11_003_Pic00001.jpg
+	ren Pic00065.jpg 2008_02_11_004_Pic00001.jpg
+
+Handhabung
+----------
+DTORD [input] [output] [jjjj] [mm] [tt] [n]
+[input] ... Eingabe Datei (enthält die Dateinamen)
+[output] .. Ausgabe Datei (DOS Batch)
+[jjjj] .... Jahr der Dateierstellung (4-stellig)
+[mm] ...... Monat der Dateierstellung (2-stellig)
+[tt] ...... Tag der Dateierstellung (2-stellig)
+[n] ....... Anzahl der Dateinamen (0)automatisch
+
+bsp: 	DTORD dtdir.txt DTRENAME.BAT 2008 02 11 4

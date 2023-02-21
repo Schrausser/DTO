@@ -1,0 +1,17 @@
+DTMNEU by Dietmar SCHRAUSSER 2oo8
+
+Allgemein
+---------
+# 'Tauft' eine beliebige Dateikopie mit der aktuellen Zeit (Geändert am). Die Datei selbst wird dabei unleserlich. 
+# Erstellt einen Ordner [~tmp_DTMNEU] und erstellt dort eine unveränderte Kopie der jeweiligen Datei.
+Zur schnellen Erstellung von nach Änderungszeit geordneten Dateilisten (dir /o:d). Ideal nach händischer Bilder Ordnung.  
+
+Handhabung
+----------
+Die Dateikopien der Reihe nach einzeln über DTMNEU.lnk ziehen.
+Dabei folgendes beachten:
+DTMNEU.lnk verwenden. Der Ordner [~tmp_DTMNEU] und die Kopien werden im Verzeichnis der verlinkten Datei DTMNEU.exe erstellt.
+
+
+
+
