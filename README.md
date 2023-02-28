@@ -3,5 +3,26 @@ The file organizing tool (DTO) is a 32-bit Windows application for the systemati
 
  The generated folder structure contains a main folder (1) and one or, in the case of processed raw files, two subfolders (2) and (3) with the ordered and renamed image files or raw files.
 
+## Screenshots
+![figure.\label{pic1}](pic1.png)
+
+
+![figure.\label{pic2}](pic2.png)
+
+
+![figure.\label{pic3}](pic3.png)
+
+
+![figure.\label{pic4}](pic4.png)
+
+
+![figure.\label{pic5}](pic5.png)
+
+
+![figure.\label{pic6}](pic6.png)
+
+
+![figure.\label{pic7}](pic7.png)
+
 ## Manual
 https://www.academia.edu/81738669
