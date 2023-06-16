@@ -16,12 +16,12 @@
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #endif
-// Notiz: Programm-Icon exportieren und sperat mit dem Programm verkn¸pfen.
+// Notiz: Programm-Icon exportieren und separat mit dem Programm verkn√ºpfen.
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Globale Variablen
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-char //Variablen f¸r Einstellungen aus dto.ini:
+char //Variablen f√ºr Einstellungen aus dto.ini:
 	_DTO_lw[3],
 	_DTO_ini_bildtyp[5],
 	_DTO_ini_rawtyp[5],
@@ -39,7 +39,7 @@ char //Variablen f¸r Einstellungen aus dto.ini:
 	//Variablen zur Schalteraktivierung:
 	_DTO_Phase[] = "erstellen",
 	_DTO_subPhase[] = "off",
-	//Variablen f¸r Systemzeit
+	//Variablen f√ºr Systemzeit
 	dbuffer [9],
 	tbuffer [9];
 
@@ -118,7 +118,7 @@ BOOL CDTODlg::OnInitDialog()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Voreinstellungen bei Programmstart aus dto.ini abfragen.
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//Ausf¸hren wenn dto.ini vorhanden... 
+	//Ausf√ºhren wenn dto.ini vorhanden... 
 	if (fopen ("dto.ini", "r") == ERROR) //...fehlt dto.ini wird eine Vorlage erstellt.
 	{
 		memStream = fopen ("dto.ini", "w");
@@ -212,7 +212,7 @@ HCURSOR CDTODlg::OnQueryDragIcon()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CDTODlg::OnOrdnererstellen() 
 {
-	if ( strcmp(_DTO_Phase, "erstellen") == 0 ) //Phasen ‹berpr¸fung.
+	if ( strcmp(_DTO_Phase, "erstellen") == 0 ) //Phasen √úberpr√ºfung.
 	{
 		UpdateData(TRUE);
 		
@@ -225,14 +225,14 @@ void CDTODlg::OnOrdnererstellen()
 		m_mark_6 = _T("-");
 
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 1 - Ordner erstellen / Tempor‰re DOS Batch schreiben:
+	  //Schritt 1 - Ordner erstellen / Tempor√§re DOS Batch schreiben:
 		
 		outStream1 = fopen ("~tmp01.bat", "w");
 
 		_strdate( dbuffer );    
 		_strtime( tbuffer );
 	
-		//Schreibt DOS Batch Befehlszeile: md erstellt den Ordner f¸r Tag bzw. Inhalt.
+		//Schreibt DOS Batch Befehlszeile: md erstellt den Ordner f√ºr Tag bzw. Inhalt.
 		fprintf (	outStream1, 
 					
 					"@echo off\necho -\necho DTO-Batch 1: Ordner_erstellen\necho %s %s\nmd %s%s_%s_%s_%s_%s\\\n",	
@@ -241,7 +241,7 @@ void CDTODlg::OnOrdnererstellen()
 					m_DTO_Pfad,	m_DTO_Jahr, m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ, m_DTO_Name
 			    );
 	
-		//Schreibt DOS Batch Befehlszeile: md erstellt den Ordner f¸r die Bilder (jpg).
+		//Schreibt DOS Batch Befehlszeile: md erstellt den Ordner f√ºr die Bilder (jpg).
 		fprintf (	outStream1, 
 					
 					"md %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_bild\\\n", 
@@ -250,9 +250,9 @@ void CDTODlg::OnOrdnererstellen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ
 				);
 
-		if (m_crw_schalter == 1) //Wenn Schalter f¸r RAW ein:
+		if (m_crw_schalter == 1) //Wenn Schalter f√ºr RAW ein:
 		{
-			//Schreibt DOS Batch Befehlszeile: md erstellt den Ordner f¸r die RAW Daeien.
+			//Schreibt DOS Batch Befehlszeile: md erstellt den Ordner f√ºr die RAW Daeien.
 			fprintf (	outStream1, 
 						
 						"md %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_%s\\", 
@@ -265,16 +265,16 @@ void CDTODlg::OnOrdnererstellen()
 		fclose( outStream1 );
 	  
 	  /////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 1 - Ordner erstellen / Tempor‰re DOS Batch ausf¸hren:
+	  //Schritt 1 - Ordner erstellen / Tempor√§re DOS Batch ausf√ºhren:
 		
-		//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+		//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 		if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-		//Tempor‰re DOS Batch ausf¸hren:
+		//Tempor√§re DOS Batch ausf√ºhren:
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log");
 	
-		system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen. 
+		system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen. 
 	
 		UpdateData(FALSE);
 	
@@ -287,7 +287,7 @@ void CDTODlg::OnOrdnererstellen()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CDTODlg::OndDateienordnen() 
 {	
-	if ( strcmp(_DTO_Phase, "ordnen") == 0) //Phasen ‹berpr¸fung.
+	if ( strcmp(_DTO_Phase, "ordnen") == 0) //Phasen √úberpr√ºfung.
 	{
 		UpdateData(TRUE);
 	
@@ -300,14 +300,14 @@ void CDTODlg::OndDateienordnen()
 		m_mark_6 = _T("-");
 	
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 2 - Dateien ordnen / Tempor‰re DOS Batch schreiben:
+	  //Schritt 2 - Dateien ordnen / Tempor√§re DOS Batch schreiben:
 
 		outStream1 = fopen ("~tmp01.bat", "w");
 
 		_strdate( dbuffer );    
 		_strtime( tbuffer );
 	
-		//Schreibt DOS Batch Befehlszeile: md erstellt den tempor‰ren Ordnungsordner ~O_ORDNEN.
+		//Schreibt DOS Batch Befehlszeile: md erstellt den tempor√§ren Ordnungsordner ~O_ORDNEN.
 		fprintf (	outStream1, 
 					
 					"@echo off\necho -\necho DTO-Batch 2: Bild_Dateien_ordnen\necho %s %s\nmd %s%s_%s_%s_%s_%s\\~O_ORDNEN_%s_%s_%s_%s_bild\\\n", 
@@ -317,7 +317,7 @@ void CDTODlg::OndDateienordnen()
 								m_DTO_Jahr, m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ
 		    	);
 	   
-		//Schreibt DOS Batch Befehlszeile: md erstellt den tempor‰ren Sicherungsordner ~tmp_URKOPIE f¸r JPG.
+		//Schreibt DOS Batch Befehlszeile: md erstellt den tempor√§ren Sicherungsordner ~tmp_URKOPIE f√ºr JPG.
 		fprintf (	outStream1, 
 				
 					"md %s%s_%s_%s_%s_%s\\~tmp_URKOPIE_%s_%s_%s_%s_bild\\\n", 
@@ -326,7 +326,7 @@ void CDTODlg::OndDateienordnen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ
 		    	);
 	
-		//Schreibt DOS Batch Befehlszeile: move verschiebt DTMNEU.lnk in den tempor‰ren Ordnungsordner ~O_ORDNEN.
+		//Schreibt DOS Batch Befehlszeile: move verschiebt DTMNEU.lnk in den tempor√§ren Ordnungsordner ~O_ORDNEN.
 		fprintf (	outStream1, 
 				
 					"move %sDTMNEU.lnk %s%s_%s_%s_%s_%s\\~O_ORDNEN_%s_%s_%s_%s_bild\\\n",
@@ -345,7 +345,7 @@ void CDTODlg::OndDateienordnen()
 					m_DTO_Pfad,	m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ, m_DTO_Name
 				);
 	
-		//Schreibt DOS Batch Befehlszeile: xcopy kopiert JPGs in den tempor‰ren Ordnungsordner ~O_ORDNEN.
+		//Schreibt DOS Batch Befehlszeile: xcopy kopiert JPGs in den tempor√§ren Ordnungsordner ~O_ORDNEN.
 		fprintf (	outStream1, 
 				
 					"xcopy %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_bild\\*.%s %s%s_%s_%s_%s_%s\\~O_ORDNEN_%s_%s_%s_%s_bild\\\n",
@@ -356,7 +356,7 @@ void CDTODlg::OndDateienordnen()
 								m_DTO_Jahr, m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ									
 		    	);
 
-		//Schreibt DOS Batch Befehlszeile: xcopy kopiert JPGs in den tempor‰ren C
+		//Schreibt DOS Batch Befehlszeile: xcopy kopiert JPGs in den tempor√§ren C
 		fprintf (	outStream1, 
 				
 					"xcopy %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_bild\\*.%s %s%s_%s_%s_%s_%s\\~tmp_URKOPIE_%s_%s_%s_%s_bild\\\n",
@@ -367,9 +367,9 @@ void CDTODlg::OndDateienordnen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ
 				);
 	
-		if (m_crw_schalter == 1) //Wenn Schalter f¸r RAW ein:
+		if (m_crw_schalter == 1) //Wenn Schalter f√ºr RAW ein:
 		{
-			//Schreibt DOS Batch Befehlszeile: md erstellt den tempor‰ren Sicherungsordner ~tmp_URKOPIE f¸r RAW
+			//Schreibt DOS Batch Befehlszeile: md erstellt den tempor√§ren Sicherungsordner ~tmp_URKOPIE f√ºr RAW
 			fprintf (	outStream1, 
 						
 						"md %s%s_%s_%s_%s_%s\\~tmp_URKOPIE_%s_%s_%s_%s_%s\\\n", 
@@ -378,7 +378,7 @@ void CDTODlg::OndDateienordnen()
 									m_DTO_Jahr, m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ, _DTO_ini_rawtyp
 			    	);
 
-			//Schreibt DOS Batch Befehlszeileszeile: xcopy kopiert RAWs in den tempor‰ren Sicherungsordner ~tmp_URKOPIE
+			//Schreibt DOS Batch Befehlszeileszeile: xcopy kopiert RAWs in den tempor√§ren Sicherungsordner ~tmp_URKOPIE
 			fprintf (	outStream1, 
 					
 						"xcopy %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_%s\\*.%s %s%s_%s_%s_%s_%s\\~tmp_URKOPIE_%s_%s_%s_%s_%s\\\n",
@@ -393,16 +393,16 @@ void CDTODlg::OndDateienordnen()
 		fclose( outStream1 );
 
 	  /////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 2 - Dateien ordnen / Tempor‰re DOS Batch ausf¸hren:
+	  //Schritt 2 - Dateien ordnen / Tempor√§re DOS Batch ausf√ºhren:
 	
-		//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+		//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 		if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-		//Tempor‰re DOS Batch ausf¸hren:
+		//Tempor√§re DOS Batch ausf√ºhren:
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log"); 
 	
-		system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen.  
+		system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen.  
 	
 		UpdateData(FALSE);
 	
@@ -416,7 +416,7 @@ void CDTODlg::OndDateienordnen()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CDTODlg::Onneuerstellen() 
 {
-	if ( strcmp(_DTO_subPhase, "neuerstellen") == 0) //Subphasen ‹berpr¸fung.
+	if ( strcmp(_DTO_subPhase, "neuerstellen") == 0) //Subphasen √úberpr√ºfung.
 	{
 		UpdateData(TRUE);
 
@@ -429,14 +429,14 @@ void CDTODlg::Onneuerstellen()
 		m_mark_6 = _T("-");
 	
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 2.1 - neu erstellen / Tempor‰re DOS Batch schreiben:
+	  //Schritt 2.1 - neu erstellen / Tempor√§re DOS Batch schreiben:
 
 		outStream1 = fopen ("~tmp01.bat", "w");
 
 		_strdate( dbuffer );    
 		_strtime( tbuffer );
 
-	  //Schreibt DOS Batch Befehlszeile: move verschiebt DTMNEU.lnk zur¸ck.
+	  //Schreibt DOS Batch Befehlszeile: move verschiebt DTMNEU.lnk zur√ºck.
 		fprintf (	outStream1, 
 				
 					"@echo off\necho -\necho DTO-Batch 2.1: neu_erstellen\necho %s %s\nmove %s%s_%s_%s_%s_%s\\~O_ORDNEN_%s_%s_%s_%s_bild\\DTMNEU.lnk %s\n",
@@ -447,7 +447,7 @@ void CDTODlg::Onneuerstellen()
 					_DTO_ini_pfad_dtmneu	
 			    );	
 	
-		//Schreibt DOS Batch Befehlszeile: move schiebt DTMNEU.exe zur¸ck.
+		//Schreibt DOS Batch Befehlszeile: move schiebt DTMNEU.exe zur√ºck.
 		fprintf (	outStream1, 
 					
 					"move %s%s_%s_%s_%s_%s\\DTMNEU.exe %s\n",
@@ -456,7 +456,7 @@ void CDTODlg::Onneuerstellen()
 					_DTO_ini_pfad_dtmneu 
 			    );
 
-		//Schreibt DOS Batch Befehlszeile: rd lˆscht alle erstellten Ordner und Dateien.
+		//Schreibt DOS Batch Befehlszeile: rd l√∂scht alle erstellten Ordner und Dateien.
 		fprintf (	outStream1, 
 					
 					"rd /s /q %s%s_%s_%s_%s_%s\\\n",	
@@ -467,16 +467,16 @@ void CDTODlg::Onneuerstellen()
 		fclose( outStream1 );
 
 	  /////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 2.1 - Dateien neu erstellen / Tempor‰re DOS Batch ausf¸hren:
+	  //Schritt 2.1 - Dateien neu erstellen / Tempor√§re DOS Batch ausf√ºhren:
 	
-		//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+		//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 		if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-		//Tempor‰re DOS Batch ausf¸hren:
+		//Tempor√§re DOS Batch ausf√ºhren:
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log"); 
 	
-		system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen. 
+		system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen. 
 
 		UpdateData(FALSE); 
 
@@ -490,7 +490,7 @@ void CDTODlg::Onneuerstellen()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CDTODlg::OnDateienumbenennen() 
 {
-	if (strcmp(_DTO_Phase, "umbenennen") == 0) //Phasen ‹berpr¸fung.
+	if (strcmp(_DTO_Phase, "umbenennen") == 0) //Phasen √úberpr√ºfung.
 	{
 		UpdateData(TRUE);
 		
@@ -503,7 +503,7 @@ void CDTODlg::OnDateienumbenennen()
 		m_mark_6 = _T("O");
 	
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch schreiben:
+	  //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch schreiben:
 	  //Durchgang 1/3	
 		
 		outStream1 = fopen ("~tmp01.bat", "w");
@@ -511,7 +511,7 @@ void CDTODlg::OnDateienumbenennen()
 		_strdate( dbuffer );    
 		_strtime( tbuffer );
 	
-		//Schreibt DOS Batch Befehlszeile: move verschiebt DTMNEU.lnk zur¸ck.
+		//Schreibt DOS Batch Befehlszeile: move verschiebt DTMNEU.lnk zur√ºck.
 		fprintf (	outStream1, 
 				
 					"@echo off\necho -\necho DTO-Batch 3/1: Bild_Dateien_umbenennen\necho %s %s\nmove %s%s_%s_%s_%s_%s\\~O_ORDNEN_%s_%s_%s_%s_bild\\DTMNEU.lnk %s\n",
@@ -522,7 +522,7 @@ void CDTODlg::OnDateienumbenennen()
 					_DTO_ini_pfad_dtmneu	
 			    );	
 	
-		//Schreibt DOS Batch Befehlszeile: move schiebt DTMNEU.exe zur¸ck.
+		//Schreibt DOS Batch Befehlszeile: move schiebt DTMNEU.exe zur√ºck.
 		fprintf (	outStream1, 
 					
 					"move %s%s_%s_%s_%s_%s\\DTMNEU.exe %s\n",
@@ -542,7 +542,7 @@ void CDTODlg::OnDateienumbenennen()
 								m_DTO_Jahr,	m_DTO_Monat,m_DTO_Tag,	m_DTO_Typ
 		    	);
 	
-		if (m_crw_schalter == 1) //Wenn Schalter f¸r RAW ein:
+		if (m_crw_schalter == 1) //Wenn Schalter f√ºr RAW ein:
 		{
 			//schreibt DOS Batch Befehlszeileszeile: dir erstellt eine nach name geordnete verzeichnisdatei ~dirraw raw dateien 
 			fprintf (	outStream1, 
@@ -559,20 +559,20 @@ void CDTODlg::OnDateienumbenennen()
 		fclose( outStream1 );
 
 	  /////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch ausf¸hren:
+	  //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch ausf√ºhren:
 	  //Durchgang 1/3
 
-		//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+		//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 		if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-		//Tempor‰re DOS Batch ausf¸hren:
+		//Tempor√§re DOS Batch ausf√ºhren:
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log"); 
 	
-		system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen. 
+		system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen. 
 
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch schreiben:
+	  //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch schreiben:
 	  //Durchgang 2/3
 	
 		outStream1 = fopen ("~tmp01.bat", "w");
@@ -600,24 +600,24 @@ void CDTODlg::OnDateienumbenennen()
 		fclose( outStream1 );
 
 	  /////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch ausf¸hren:
+	  //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch ausf√ºhren:
 	  //Durchgang 2/3
 
-		//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+		//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 		if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-		//Tempor‰re DOS Batch ausf¸hren:
+		//Tempor√§re DOS Batch ausf√ºhren:
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log"); 
 	
-		system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen. 
+		system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen. 
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////
-		//Anh‰ngen an von RAW Verarbeitungsparametern:
-		if ( m_crw_schalter == 1 && strcmp(_DTO_ini_param, "_srp+-") != 0) //Wenn Schalter f¸r RAW ein und RAW Verarbeitungsparameter angef¸hrt:
+		//Anh√§ngen an von RAW Verarbeitungsparametern:
+		if ( m_crw_schalter == 1 && strcmp(_DTO_ini_param, "_srp+-") != 0) //Wenn Schalter f√ºr RAW ein und RAW Verarbeitungsparameter angef√ºhrt:
 		{
 		  //////////////////////////////////////////////////////////////////////////////////////////////////////
-		  //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch schreiben:
+		  //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch schreiben:
 		  //IF bedingter Durchgang 
 			
 			outStream1 = fopen ("~tmp01.bat", "w");
@@ -641,7 +641,7 @@ void CDTODlg::OnDateienumbenennen()
 						_DTO_ini_param	// DTPRM Argument -Parameter-
 					);
 
-			//Schreibt DOS Batch Befehlszeile: (aktualisiert das Laufwerk) cd wechselt das Verzeichnis zum JPG Bildordner und f¸hrt ~renjpg01.bat aus. 
+			//Schreibt DOS Batch Befehlszeile: (aktualisiert das Laufwerk) cd wechselt das Verzeichnis zum JPG Bildordner und f√ºhrt ~renjpg01.bat aus. 
 			fprintf (	outStream1, 
 						
 						"%s\ncd %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_bild\\\n~renjpg01.bat\n",
@@ -654,24 +654,24 @@ void CDTODlg::OnDateienumbenennen()
 			fclose( outStream1 );
 
 		  /////////////////////////////////////////////////////////////////////////////////////////////////////
-	      //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch ausf¸hren:
+	      //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch ausf√ºhren:
 	      //IF bedingter Durchgang
 		
-			//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+			//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 			if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-			//Tempor‰re DOS Batch ausf¸hren:
+			//Tempor√§re DOS Batch ausf√ºhren:
 			if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 			if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log"); 
 	
-			system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen. 
+			system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen. 
 		}
 		
-		else //Wenn keine RAW Verarbeitungsparameter angef¸hrt:
+		else //Wenn keine RAW Verarbeitungsparameter angef√ºhrt:
 		{
 		
 		  //////////////////////////////////////////////////////////////////////////////////////////////////////
-		  //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch schreiben:
+		  //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch schreiben:
 		  //ELSE bedingter Durchgang  
 
 			outStream1 = fopen ("~tmp01.bat", "w");
@@ -681,7 +681,7 @@ void CDTODlg::OnDateienumbenennen()
 
 			strncpy (_DTO_lw, m_DTO_Pfad, 2); //Laufwerk.
 			
-			//Schreibt DOS Batch Befehlszeile: (aktualisiert das Laufwerk) cd wechselt das Verzeichnis zum JPG Bildordner und f¸hrt ~renjpg.bat aus
+			//Schreibt DOS Batch Befehlszeile: (aktualisiert das Laufwerk) cd wechselt das Verzeichnis zum JPG Bildordner und f√ºhrt ~renjpg.bat aus
 			fprintf (	outStream1, 
 				
 						"@echo off\necho -\necho DTO-Batch 3/keine_RAW_mit_Verarbeitungs_Parametern: Bild_Dateien_umbenennen\necho %s %s\n%s\ncd %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_bild\\\n~renjpg.bat\n",
@@ -695,23 +695,23 @@ void CDTODlg::OnDateienumbenennen()
 			fclose( outStream1 );
 
 		  /////////////////////////////////////////////////////////////////////////////////////////////////////
-	      //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch ausf¸hren:
+	      //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch ausf√ºhren:
 	      //ELSE bedingter Durchgang  
 	
-			//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+			//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 			if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-			//Tempor‰re DOS Batch ausf¸hren:
+			//Tempor√§re DOS Batch ausf√ºhren:
 			if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 			if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log");
 	
-			system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen. 
+			system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen. 
 		}
 	
-		if (m_crw_schalter == 1) //Wenn Schalter f¸r RAW ein:
+		if (m_crw_schalter == 1) //Wenn Schalter f√ºr RAW ein:
 		{
 	  ////////////////////////////////////////////////////////////////////////////////////////////////////
-      //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch schreiben:
+      //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch schreiben:
       //Durchgang RAW
 
 			outStream1 = fopen ("~tmp01.bat", "w");
@@ -749,7 +749,7 @@ void CDTODlg::OnDateienumbenennen()
 						_DTO_ini_num_k
 					);
 		
-			//Schreibt DOS Batch Befehlszeile: cd wechselt das Verzeichnis zum RAW Bildordner und f¸hrt ~renraw.bat aus. 
+			//Schreibt DOS Batch Befehlszeile: cd wechselt das Verzeichnis zum RAW Bildordner und f√ºhrt ~renraw.bat aus. 
 			fprintf (	outStream1, 
 				
 						"%s\ncd %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_%s\\\n~renraw.bat\n",
@@ -762,21 +762,21 @@ void CDTODlg::OnDateienumbenennen()
 			fclose( outStream1 );
 		
 			/////////////////////////////////////////////////////////////////////////////////////////////////////
-			//Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch ausf¸hren:
+			//Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch ausf√ºhren:
 			//Durchgang RAW
 	
-			//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+			//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 			if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-			//Tempor‰re DOS Batch ausf¸hren:
+			//Tempor√§re DOS Batch ausf√ºhren:
 			if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 			if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log");
 	
-			system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen. 
+			system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen. 
 		}
 
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch schreiben:
+	  //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch schreiben:
 	  //Durchgang 3/3
 
 		outStream1 = fopen ("~tmp01.bat", "w");
@@ -784,7 +784,7 @@ void CDTODlg::OnDateienumbenennen()
 		_strdate( dbuffer );    
 		_strtime( tbuffer );
 
-		 //Schreibt DOS Batch Befehlszeile: md erstellt einen tempor‰ren Ordner ~tmp.  
+		 //Schreibt DOS Batch Befehlszeile: md erstellt einen tempor√§ren Ordner ~tmp.  
 		fprintf (	outStream1, 
 				
 					"@echo off\necho -\necho DTO-Batch 3/3: Bild_Dateien_umbenennen\necho %s %s\nmd %s%s_%s_%s_%s_%s\\~temp\n", 
@@ -813,7 +813,7 @@ void CDTODlg::OnDateienumbenennen()
 					m_DTO_Pfad,	m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ, m_DTO_Name
 				);
 
-		//Schreibt DOS Batch Befehlszeile: del lˆscht alle Dateien im Ordner bild.  
+		//Schreibt DOS Batch Befehlszeile: del l√∂scht alle Dateien im Ordner bild.  
 		fprintf (	outStream1, 
 				
 					"del /f /q %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_bild\\*.*\n",
@@ -822,7 +822,7 @@ void CDTODlg::OnDateienumbenennen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ
 				);
 
-		//schreibt DOS Batch Befehlszeileszeile: del lˆscht alle Dateien in ordner RAW. 
+		//schreibt DOS Batch Befehlszeileszeile: del l√∂scht alle Dateien in ordner RAW. 
 		fprintf (	outStream1, 
 				
 					"del /f /q %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_%s\\*.*\n",
@@ -831,7 +831,7 @@ void CDTODlg::OnDateienumbenennen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ, _DTO_ini_rawtyp
 				);
 	
-		//Schreibt DOS Batch Befehlszeile: move verschiebt alle 20*.bildtyp aus ~tmp zur¸ck in den Ordner bild. 
+		//Schreibt DOS Batch Befehlszeile: move verschiebt alle 20*.bildtyp aus ~tmp zur√ºck in den Ordner bild. 
 		fprintf (	outStream1, 
 				
 					"move %s%s_%s_%s_%s_%s\\~temp\\20*.%s %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_bild\\\n",
@@ -841,7 +841,7 @@ void CDTODlg::OnDateienumbenennen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ
 				);
 
-		//Schreibt DOS Batch Befehlszeileszeile: move verschiebt alle 20*.[RAW]s aus ~tmp zur¸ck in den Ordner RAW.
+		//Schreibt DOS Batch Befehlszeileszeile: move verschiebt alle 20*.[RAW]s aus ~tmp zur√ºck in den Ordner RAW.
 		fprintf (	outStream1, 
 				
 					"move %s%s_%s_%s_%s_%s\\~temp\\20*.%s %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_%s\\\n",
@@ -871,7 +871,7 @@ void CDTODlg::OnDateienumbenennen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ
 				);
 	
-		 //Schreibt DOS Batch Befehlszeile: rd lˆscht den Ordner ~tmp.  
+		 //Schreibt DOS Batch Befehlszeile: rd l√∂scht den Ordner ~tmp.  
 		fprintf (	outStream1, 
 				
 					"rd /s /q %s%s_%s_%s_%s_%s\\~temp\\\n",
@@ -879,7 +879,7 @@ void CDTODlg::OnDateienumbenennen()
 					m_DTO_Pfad,	m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ, m_DTO_Name
 				);
 	
-		//Schreibt DOS Batch Befehlszeile: rd lˆscht den Ordner ~O_ORDNEN_. 
+		//Schreibt DOS Batch Befehlszeile: rd l√∂scht den Ordner ~O_ORDNEN_. 
 		fprintf (	outStream1, 
 				
 					"rd /s /q %s%s_%s_%s_%s_%s\\~O_ORDNEN_%s_%s_%s_%s_bild\\\n",
@@ -891,17 +891,17 @@ void CDTODlg::OnDateienumbenennen()
 		fclose( outStream1 );
 
 	  /////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 3 - Dateien umbenennen / Tempor‰re DOS Batch ausf¸hren:
+	  //Schritt 3 - Dateien umbenennen / Tempor√§re DOS Batch ausf√ºhren:
 	  //Durchgang 3/3
 	
-		//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+		//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 		if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-		//Tempor‰re DOS Batch ausf¸hren:
+		//Tempor√§re DOS Batch ausf√ºhren:
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log"); 
 	
-		system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen. 
+		system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen. 
 
 		UpdateData(FALSE);
 	
@@ -915,7 +915,7 @@ void CDTODlg::OnDateienumbenennen()
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CDTODlg::Onneuordnen() 
 {
-	if (strcmp(_DTO_subPhase, "neuordnen") == 0) //Subphasen ‹berpr¸fung.
+	if (strcmp(_DTO_subPhase, "neuordnen") == 0) //Subphasen √úberpr√ºfung.
 	{
 		UpdateData(TRUE);
 	
@@ -928,14 +928,14 @@ void CDTODlg::Onneuordnen()
 		m_mark_6 = _T("-");
 	
 	 //////////////////////////////////////////////////////////////////////////////////////////////////////
-	 //Schritt 3.1 - Dateien neu ordnen / Tempor‰re DOS Batch schreiben:
+	 //Schritt 3.1 - Dateien neu ordnen / Tempor√§re DOS Batch schreiben:
 
 		outStream1 = fopen ("~tmp01.bat", "w");
 
 		_strdate( dbuffer );    
 		_strtime( tbuffer );
 
-		//Schreibt DOS Batch Befehlszeile: del lˆscht alle Dateien in Ordner bild.
+		//Schreibt DOS Batch Befehlszeile: del l√∂scht alle Dateien in Ordner bild.
 		fprintf (	outStream1, 
 				
 					"@echo off\necho -\necho DTO-Batch 3.1: neu_ordnen\necho %s %s\ndel /f /q %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_bild\\*.*\n",
@@ -945,7 +945,7 @@ void CDTODlg::Onneuordnen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ
 				);
 
-		//Schreibt DOS Batch Befehlszeile: rd lˆscht den Ordner ~O_MPG_.
+		//Schreibt DOS Batch Befehlszeile: rd l√∂scht den Ordner ~O_MPG_.
 		fprintf (	outStream1, 
 				
 					"rd /s /q %s%s_%s_%s_%s_%s\\~O_MPG_%s_%s_%s_%s_bild\\\n",
@@ -954,7 +954,7 @@ void CDTODlg::Onneuordnen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ
 				);
 
-		//Schreibt DOS Batch Befehlszeile: rd lˆscht den Ordner ~tmp_DTMNEU.
+		//Schreibt DOS Batch Befehlszeile: rd l√∂scht den Ordner ~tmp_DTMNEU.
 		fprintf (	outStream1, 
 					
 					"rd /s /q %s%s_%s_%s_%s_%s\\~tmp_DTMNEU\\\n",
@@ -963,7 +963,7 @@ void CDTODlg::Onneuordnen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ
 				);
 
-		//Schreibt DOS Batch Befehlszeile: md erstellt den tempor‰ren Ordnungsordner ~O_ORDNEN.
+		//Schreibt DOS Batch Befehlszeile: md erstellt den tempor√§ren Ordnungsordner ~O_ORDNEN.
 		fprintf (	outStream1, 
 				
 					"md %s%s_%s_%s_%s_%s\\~O_ORDNEN_%s_%s_%s_%s_bild\\\n", 
@@ -972,7 +972,7 @@ void CDTODlg::Onneuordnen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ
 				);
 	
-		//Schreibt DOS Batch Befehlszeile: move verschiebt DTMNEU.lnk in den tempor‰ren Ordnungsordner ~O_ORDNEN.
+		//Schreibt DOS Batch Befehlszeile: move verschiebt DTMNEU.lnk in den tempor√§ren Ordnungsordner ~O_ORDNEN.
 		fprintf (	outStream1, 
 				
 					"move %sDTMNEU.lnk %s%s_%s_%s_%s_%s\\~O_ORDNEN_%s_%s_%s_%s_bild\\\n",
@@ -991,7 +991,7 @@ void CDTODlg::Onneuordnen()
 					m_DTO_Pfad,	m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ, m_DTO_Name
 				);
 
-		//Schreibt DOS Batch Befehlszeile: xcopy kopiert JPGs vom tempor‰ren Sicherungsordner ~tmp_URKOPIE in den Ordner bild.
+		//Schreibt DOS Batch Befehlszeile: xcopy kopiert JPGs vom tempor√§ren Sicherungsordner ~tmp_URKOPIE in den Ordner bild.
 		fprintf (	outStream1, 
 				
 					"xcopy %s%s_%s_%s_%s_%s\\~tmp_URKOPIE_%s_%s_%s_%s_bild\\*.%s %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_bild\\\n",
@@ -1002,7 +1002,7 @@ void CDTODlg::Onneuordnen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ
 				);
 				
-		//Schreibt DOS Batch Befehlszeile: xcopy kopiert JPGs in den tempor‰ren Ordnungsordner ~O_ORDNEN.
+		//Schreibt DOS Batch Befehlszeile: xcopy kopiert JPGs in den tempor√§ren Ordnungsordner ~O_ORDNEN.
 		fprintf (	outStream1, 
 				
 					"xcopy %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_bild\\*.%s %s%s_%s_%s_%s_%s\\~O_ORDNEN_%s_%s_%s_%s_bild\\\n",
@@ -1013,9 +1013,9 @@ void CDTODlg::Onneuordnen()
 								m_DTO_Jahr, m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ									
 				);	
 	
-		if (m_crw_schalter == 1) //Wenn Schalter f¸r RAW ein:
+		if (m_crw_schalter == 1) //Wenn Schalter f√ºr RAW ein:
 		{
-			//Schreibt DOS Batch Befehlszeile: del lˆscht alle Dateien in Ordner RAW.
+			//Schreibt DOS Batch Befehlszeile: del l√∂scht alle Dateien in Ordner RAW.
 			fprintf (	outStream1, 
 				
 						"del /f /q %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_%s\\*.*\n",
@@ -1024,7 +1024,7 @@ void CDTODlg::Onneuordnen()
 									m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ, _DTO_ini_rawtyp	
 					);
 
-			//Schreibt DOS Batch Befehlszeile: xcopy kopiert RAWs vom tempor‰ren Sicherungsordner ~tmp_URKOPIE in den Ordner RAW.
+			//Schreibt DOS Batch Befehlszeile: xcopy kopiert RAWs vom tempor√§ren Sicherungsordner ~tmp_URKOPIE in den Ordner RAW.
 			fprintf (	outStream1, 
 					
 						"xcopy %s%s_%s_%s_%s_%s\\~tmp_URKOPIE_%s_%s_%s_%s_%s\\*.%s %s%s_%s_%s_%s_%s\\%s_%s_%s_%s_%s\\\n",
@@ -1039,16 +1039,16 @@ void CDTODlg::Onneuordnen()
 		fclose( outStream1 );
 
 	 //////////////////////////////////////////////////////////////////////////////////////////////////////
-	 //Schritt 3.1 - Dateien neu ordnen / Tempor‰re DOS Batch ausf¸hren:
+	 //Schritt 3.1 - Dateien neu ordnen / Tempor√§re DOS Batch ausf√ºhren:
 
-		//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+		//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 		if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-		//Tempor‰re DOS Batch ausf¸hren:
+		//Tempor√§re DOS Batch ausf√ºhren:
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log"); 
 	
-		system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen. 
+		system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen. 
 	
 		UpdateData(FALSE);
 	
@@ -1058,11 +1058,11 @@ void CDTODlg::Onneuordnen()
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Schritt 4 - tempor‰re Dateien und Ordner lˆschen
+// Schritt 4 - tempor√§re Dateien und Ordner l√∂schen
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CDTODlg::Onreinigen() 
 {
-	if (strcmp (_DTO_Phase, "reinigen") == 0) //Phasen ‹berpr¸fung.
+	if (strcmp (_DTO_Phase, "reinigen") == 0) //Phasen √úberpr√ºfung.
 	{
 		UpdateData(TRUE);
 
@@ -1075,14 +1075,14 @@ void CDTODlg::Onreinigen()
 		m_mark_6 = _T("-");
 	
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 4 - tempor‰re Dateien und Ordner lˆschen / Tempor‰re DOS Batch schreiben:
+	  //Schritt 4 - tempor√§re Dateien und Ordner l√∂schen / Tempor√§re DOS Batch schreiben:
 		
 		outStream1 = fopen ("~tmp01.bat", "w");
 
 		_strdate( dbuffer );    
 		_strtime( tbuffer );
 
-		//Schreibt DOS Batch Befehlszeile: rd lˆscht den Ordner ~O_MPG_. 
+		//Schreibt DOS Batch Befehlszeile: rd l√∂scht den Ordner ~O_MPG_. 
 		fprintf (	outStream1, 
 				
 					"@echo off\necho -\necho DTO-Batch 4: Ordnerstruktur_reinigen\necho %s %s\nrd /s /q %s%s_%s_%s_%s_%s\\~O_MPG_%s_%s_%s_%s_bild\\\n",
@@ -1092,7 +1092,7 @@ void CDTODlg::Onreinigen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag, m_DTO_Typ
 				);
 
-		//Schreibt DOS Batch Befehlszeile: rd lˆscht den tempor‰ren Sicherungsordner ~tmp_URKOPIE bild.
+		//Schreibt DOS Batch Befehlszeile: rd l√∂scht den tempor√§ren Sicherungsordner ~tmp_URKOPIE bild.
 		fprintf (	outStream1, 
 				
 					"rd /s /q %s%s_%s_%s_%s_%s\\~tmp_URKOPIE_%s_%s_%s_%s_bild\\\n",
@@ -1101,7 +1101,7 @@ void CDTODlg::Onreinigen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ
 				);
 
-		//Schreibt DOS Batch Befehlszeile: rd lˆscht den Ordner ~tmp_DTMNEU.
+		//Schreibt DOS Batch Befehlszeile: rd l√∂scht den Ordner ~tmp_DTMNEU.
 		fprintf (	outStream1, 
 				
 					"rd /s /q %s%s_%s_%s_%s_%s\\~tmp_DTMNEU\\\n",
@@ -1110,9 +1110,9 @@ void CDTODlg::Onreinigen()
 								m_DTO_Jahr,	m_DTO_Monat, m_DTO_Tag,	m_DTO_Typ
 				);
 
-		if (m_crw_schalter == 1) //schalter f¸r RAW ein
+		if (m_crw_schalter == 1) //schalter f√ºr RAW ein
 		{
-			//Schreibt DOS Batch Befehlszeile: rd lˆscht den tempor‰ren Sicherungsordner ~tmp_URKOPIE RAW
+			//Schreibt DOS Batch Befehlszeile: rd l√∂scht den tempor√§ren Sicherungsordner ~tmp_URKOPIE RAW
 			fprintf (	outStream1, 
 					
 						"rd /s /q %s%s_%s_%s_%s_%s\\~tmp_URKOPIE_%s_%s_%s_%s_%s\\\n",
@@ -1125,16 +1125,16 @@ void CDTODlg::Onreinigen()
 		fclose( outStream1 );
 
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////
-	  //Schritt 4 - tempor‰re Dateien und Ordner lˆschen / Tempor‰re DOS Batch ausf¸hren:
+	  //Schritt 4 - tempor√§re Dateien und Ordner l√∂schen / Tempor√§re DOS Batch ausf√ºhren:
 
-		//Tempor‰re DOS Batch editieren, ggf.ausf¸hren (Shell oder Mausclick)
+		//Tempor√§re DOS Batch editieren, ggf.ausf√ºhren (Shell oder Mausclick)
 		if (atoi(_DTO_ini_check_view) == 1) system("notepad ~tmp01.bat");
 	
-		//Tempor‰re DOS Batch ausf¸hren:
+		//Tempor√§re DOS Batch ausf√ºhren:
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) != 1) system("~tmp01.bat"); 
 		if (atoi(_DTO_ini_check_auto) == 1 && atoi(_DTO_ini_check_log) == 1) system("~tmp01.bat >> dto.log");
 		
-		system("del ~tmp01.bat"); //Tempor‰re DOS Batch lˆschen. 
+		system("del ~tmp01.bat"); //Tempor√§re DOS Batch l√∂schen. 
 	
 		UpdateData(FALSE);
 	
@@ -1145,7 +1145,7 @@ void CDTODlg::Onreinigen()
 
 //Schalter Notiz: dialog/button/style/auto OFF stellen.
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Schalter f¸r RAW
+// Schalter f√ºr RAW
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void CDTODlg::OnCheckCrw() 
 {
@@ -1175,7 +1175,7 @@ void CDTODlg::Onrawparameter()
 		
 	memStream = fopen ("dto.ini", "r");
 	
-	char	//Tempor‰re Variablen, da im Dialog Einstellungen keine Ver‰nderungen stattfinden.
+	char	//Tempor√§re Variablen, da im Dialog Einstellungen keine Ver√§nderungen stattfinden.
 			__tmp01[50], __tmp02[5], __tmp03[2], __tmp04[2], __tmp05[2], __tmp06[2];
 	
 	fscanf(	memStream, 
